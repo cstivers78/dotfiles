@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+# dotfiles/git/@install
+
+###################################################################################################
+# Setup
+
+PROG=${(%):-%N}
+DIR=$(cd $(dirname ${PROG}) && pwd)
+DOTFILES=$(cd ${DIR} && cd .. && pwd)
+
+###################################################################################################
+# Main
+
+DEST=$1
+LINK=$2
+
+echo ln -s ${DEST} ${LINK}
+
+if [[ -f ${LINK} ]]; then
+	CURR=$(readlink ${LINK})
+	if [[ "${DEST}" != "${CURR}" ]]; then
+		rm ${LINK}
+	fi
+fi
+
+if [[ ! -f ${LINK} ]]; then
+	ln -s ${DEST} ${LINK}
+fi

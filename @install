@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+# dotfiles/@install
+
+###################################################################################################
+# Setup
+
+PROG=${(%):-%N}
+DOTFILES=$(cd $(dirname ${PROG}) && pwd)
+PATH=${DOTFILES}/lib:${PATH}
+
+###################################################################################################
+# Modules
+
+MODULES=(
+	git
+	zsh
+	)
+
+###################################################################################################
+# Main
+
+echo ${DOTFILES}
+for module in ${MODULES}; do
+	if [[ -x ${DOTFILES}/${module}/@install ]]; then
+		${DOTFILES}/${module}/@install
+	fi
+done

@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# dotfiles/zsh/@install
+
+###################################################################################################
+# Setup
+
+PROG=${(%):-%N}
+DIR=$(cd $(dirname ${PROG}) && pwd)
+DOTFILES=$(cd ${DIR} && cd .. && pwd)
+PATH=${DOTFILES}/lib:${PATH}
+
+###################################################################################################
+# Symlinks
+
+echo ${DOTFILES}
+symlink ${DOTFILES}/zsh/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh 

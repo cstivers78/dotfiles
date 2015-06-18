@@ -12,5 +12,7 @@ PATH=${DOTFILES}/lib:${PATH}
 ###################################################################################################
 # Symlinks
 
-echo ${DOTFILES}
-symlink ${DOTFILES}/zsh/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh 
+rm -f ~/.oh-my-zsh/custom/*
+
+symlink ${DOTFILES}/zsh/custom.zsh ~/.oh-my-zsh/custom/custom.zsh
+symlink '/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl' ~/bin/subl

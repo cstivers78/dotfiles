@@ -1,26 +1,21 @@
-#!/usr/bin/env zsh
-# dotfiles/@install
 
 ###################################################################################################
-# Setup
+# options
 
-PROG=${(%):-%N}
-DOTFILES=$(cd $(dirname ${PROG}) && pwd)
-PATH=${DOTFILES}/lib:${PATH}
-
-###################################################################################################
-# Modules
-
-MODULES=(
-	git
-	zsh
-	)
+setopt INC_APPEND_HISTORY
+setopt NO_SHARE_HISTORY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
 
 ###################################################################################################
-# Main
+# paths
 
-for module in ${MODULES}; do
-	if [[ -x ${DOTFILES}/${module}/@install ]]; then
-		${DOTFILES}/${module}/@install
-	fi
-done
+PATH=~/bin:${PATH}
+export GOPATH=~/projects/go
+
+###################################################################################################
+# aliases
+
+alias ...='../..'
+alias l='ls'
+alias ll='ls -alh'

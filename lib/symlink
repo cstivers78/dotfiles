@@ -14,15 +14,13 @@ DOTFILES=$(cd ${DIR} && cd .. && pwd)
 DEST=$1
 LINK=$2
 
-echo ln -s ${DEST} ${LINK}
-
-if [[ -f ${LINK} ]]; then
+if [[ -h ${LINK} ]]; then
 	CURR=$(readlink ${LINK})
 	if [[ "${DEST}" != "${CURR}" ]]; then
 		rm ${LINK}
 	fi
 fi
 
-if [[ ! -f ${LINK} ]]; then
+if [[ ! -e ${LINK} ]] && [[ ! -h ${LINK} ]]; then
 	ln -s ${DEST} ${LINK}
 fi

@@ -12,5 +12,4 @@ PATH=${DOTFILES}/lib:${PATH}
 ###################################################################################################
 # Symlinks
 
-echo ${DOTFILES}
 symlink ${DOTFILES}/git/.gitconfig ~/.gitconfig

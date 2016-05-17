@@ -10,12 +10,22 @@ setopt HIST_IGNORE_DUPS
 ###################################################################################################
 # paths
 
-PATH=~/bin:${PATH}
 export GOPATH=~/projects/go
+export PATH=~/bin:${PATH}
+export PATH=${PATH}:/usr/local/go/bin
 
 ###################################################################################################
 # aliases
 
 alias ...='../..'
+alias ....='../../..'
 alias l='ls'
 alias ll='ls -alh'
+
+###################################################################################################
+# misc
+
+if [ -f /usr/local/bin/aws_zsh_completer.sh ]; then
+	source /usr/local/bin/aws_zsh_completer.sh
+fi
+

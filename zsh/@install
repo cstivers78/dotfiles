@@ -7,12 +7,25 @@
 PROG=${(%):-%N}
 DIR=$(cd $(dirname ${PROG}) && pwd)
 DOTFILES=$(cd ${DIR} && cd .. && pwd)
-PATH=${DOTFILES}/lib:${PATH}
 
 ###################################################################################################
 # Symlinks
 
-rm -f ~/.oh-my-zsh/custom/*
 
-symlink ${DOTFILES}/zsh/custom.zsh ~/.oh-my-zsh/custom/custom.zsh
-symlink '/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl' ~/bin/subl
+# case "$(uname)" in
+# 	'Linux' )
+# 		;;
+# 	'Darwin' )
+# 		;;
+# esac
+
+###################################################################################################
+# Install Files
+
+cp -rf ${DIR}/.zshrc ${HOME}/.zshrc
+
+rm -rf ${HOME}/.oh-my-zsh/custom/*
+cp -rf ${DIR}/custom/* ${HOME}/.oh-my-zsh/custom/.
+
+rm -rf ${HOME}/.oh-my-zsh/themes/*
+cp -rf ${DIR}/themes/* ${HOME}/.oh-my-zsh/themes/.
